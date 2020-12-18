@@ -89,7 +89,7 @@ Ambiente de logs executando:
 
 Você pode executar esses ambientes em qualquer sistema operacional com suporte a docker mas não posso garantir que tudo vai funcionar como esperado portando recomendo testar seguindo os requisitos abaixo:
 
-* Sistema Operacional: Ubuntu 18 LTE
+* Sistema Operacional: Ubuntu 18 LTS 
 * Memória RAM: >= 6GB
 
 
@@ -336,6 +336,28 @@ Para realizar o import:
    * Request Status Code: contagem de logs por HTTP status code
 <p>
   <img  src="./assets/kibana8.png" />
+</p>
+
+### Rastreamento de log de requisições pelo uuid
+
+A aplicação implementa nos registros de log um identifiador único a fim de identificar e rastrear todo o processo de execução de uma requisição na aplicação.
+
+O uuid também é retornado como o header "x-request-id" em todas as requisições:
+
+```bash
+$ curl localhost/twitter/api/v1/users/followers -I
+HTTP/1.1 200 OK
+Server: gunicorn/20.0.4
+Date: Fri, 18 Dec 2020 22:29:56 GMT
+Connection: keep-alive
+Content-Type: application/json
+Content-Length: 232
+x-request-id: c7d03ac6-6253-4816-baaa-56525498e394
+```
+
+Buscando pelo id retornado no header é possível rastrear os logs referentes aquela requisição: 
+<p>
+  <img  src="./assets/kibana9.png" />
 </p>
 
 ## Dashboard de métricas no Grafana
