@@ -296,6 +296,7 @@ Para realizar o import:
 * Clique em import novamente e selecione o arquivo com os dados exportados do dashboard:
    * Arquivo dentro do projeto: exports/kibana-dashboar-twrestapi-export.json
 * Clique em "Import"
+* Selecione o index patter para relacionar ao dashboard
 * Se aparecer a mensagem "Import sucessful" o dashboard foi importado corretamente
 * Acesse na aba lateral "Dashboard" --> "Twitter API"
 
@@ -307,6 +308,8 @@ Usuário: admin
 Senha: admin
 
 Observação: será solicitado a troca da senha no primeiro acesso.
+
+![Dashboard](https://imgur.com/KZzfRNL)
 
 ### Autor
 ---
