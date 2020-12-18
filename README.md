@@ -288,7 +288,10 @@ curl http://localhost/twitter/api/v1/posts/tags/lang
 
 ## Dashboard de logs no Kibana
 
-* Acesse: http://localhost:5601/
+Acesse: http://localhost:5601/
+
+
+### Criar Index Pattern
 
 Ao acessar o Kibana pela primeira vez é preciso configurar o index pattern.
 
@@ -303,6 +306,8 @@ Selecione o campo "timestamp" e clique em "Create index pattern":
 <p>
   <img alt="NextLevelWeek" title="#NextLevelWeek" src="./assets/kibana3.png" />
 </p>
+
+### Importação de Dashboard
 
 Para visualizar os logs do no Kibana foi disponibilizado um dashboard para ser importado:
 
