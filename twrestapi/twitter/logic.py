@@ -3,6 +3,8 @@ import json
 import logging
 import datetime
 import collections
+import time
+from functools import wraps
 from .model import Twitt
 from flask_log_request_id import current_request_id
 
@@ -13,6 +15,17 @@ class TwittCLogic():
 
         self._applog = logging.getLogger("twitter.app")
 
+    def timed(func):
+
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            start = time.time()
+            result = func(*args, **kwargs)
+            end = time.time()
+            applog.debug("time exec", extra={"level":"debug", "function":func.__name__, "time": round(end - start, 2)})
+            return result
+
+    return wrapper
 
     def _get_user_info(self, list_users, author_id):
 
@@ -22,7 +35,7 @@ class TwittCLogic():
 
                 return user
 
-
+    @timed
     def publish(self, tweets_list):
         
         try:
@@ -53,7 +66,7 @@ class TwittCLogic():
 
         return True
 
-
+    @timed
     def list_users_by_followers(self, order='ASC', limit=5):
 
         list_users = []
@@ -76,7 +89,7 @@ class TwittCLogic():
         
         return list_users
  
-
+    @timed
     def total_posts_by_hour(self):
 
         list_posts = []
@@ -84,8 +97,11 @@ class TwittCLogic():
         pipeline = [ { "$group": { "_id": "$post_hour", 'total_post': {'$sum': 1 }}},
                      { "$sort" : { "_id" : 1 } }
                    ]
-
+        self._applog.debug("Exec pipeline in database", extra={'logger': __name__, 'level': 'debug', 'uuid': current_request_id()})
+        
         data = Twitt.objects().aggregate(pipeline)
+
+        self._applog.debug("Exec pipeline OK", extra={'logger': __name__, 'level': 'debug', 'uuid': current_request_id()})
 
         for d in data:  
 
@@ -103,13 +119,19 @@ class TwittCLogic():
                                 } 
                     }]
 
+        
+
         list_score_lang=[]
 
         for user in usernames:
 
-            for tag in self._tag_list:
+            for tag in self._get_tag_list():
+
+                self._applog.debug("Exec pipeline in database", extra={'logger': __name__, 'level': 'debug', 'uuid': current_request_id()})
                 
                 data = Twitt.objects(hashtag=tag,username=user['_id']).aggregate(pipeline_lang)
+
+                self._applog.debug("Exec pipeline OK", extra={'logger': __name__, 'level': 'debug', 'uuid': current_request_id()})
 
                 for d in data:
 
@@ -137,7 +159,7 @@ class TwittCLogic():
 
         for user in usernames:
 
-            for tag in self._tag_list:
+            for tag in self._get_tag_list():
                 
                 data_location = Twitt.objects(hashtag=tag,username=user['_id']).aggregate(pipeline_location)
 
@@ -153,7 +175,25 @@ class TwittCLogic():
 
         return list_score_country
 
-    
+
+    def _get_tag_list(self):
+
+        pipeline_tags = [{ 
+                        "$group": { 
+                                    "_id": "$hashtag"
+                                } 
+                    }]
+
+        data = Twitt.objects().aggregate(pipeline_tags)
+
+        list_tags = []
+
+        for d in data:
+            list_tags.append(d['_id'])
+
+        return list_tags
+
+    @timed
     def total_posts_by_tag(self, group_by="location"):
 
         pipeline_user = [{ 
