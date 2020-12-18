@@ -5,16 +5,16 @@
 
 ![Badge](https://img.shields.io/badge/MyTwitterApi-%23CB563E?style=for-the-badge&logo=twitter) [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/) [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
 
-Indice
+Conteúdo
 =================
 <!--ts-->
    * [Ambientes](#Ambientes)
       * [Aplicação](#Aplicação)
          * [twrestapi](#twrestapi)
          * [twitterctl](#twitterctl)
-      * [database](#database)
-      * [logs](#logs)
-      * [métricas](#métricas)
+      * [Database](#database)
+      * [Logs](#logs)
+      * [Métricas](#métricas)
 <!--te-->
 
 
@@ -84,7 +84,7 @@ Ambiente de logs executando:
 * [Grafana](https://grafana.com/) para visualização e analise de métricas.
 
 
-# Pré-requisitos
+# Deploy dos Ambientes
 
 Antes de começar a executar o ambiente, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
 
@@ -103,6 +103,8 @@ $ git clone https://github.com/ezequielsbarros/mytwitterapi.git
 $ cd mytwitterapi
 
 # Faça o deploy dos ambientes com o Compose
+# A opção "--build" serve para criar o container da api rest. 
+# O uso dessa opção só é nescessária na primeira execução ou caso a aplicação twrestapi seja modificada  
 $ docker-compose up --build
 
 # Opcional: use a opção "-d" para executar os ambientes em backgroud
