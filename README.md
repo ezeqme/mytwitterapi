@@ -331,7 +331,10 @@ Para realizar o import:
 <p>
   <img  src="./assets/kibana7.png" />
 </p>
-* Acesse na aba lateral "Dashboard" --> "Twitter API"
+* Acesse na aba lateral "Dashboard" --> "Twitter API". O dashboard tem três visualizações:
+   * Event Log Messages: contagem de eventos de log por level (debug, error, info)
+   * Requisições por endpoint:  contagem de logs por endpoint
+   * Request Status Code: contagem de logs por HTTP status code
 <p>
   <img  src="./assets/kibana8.png" />
 </p>
@@ -345,6 +348,11 @@ Senha: admin
 
 Observação: será solicitado a troca da senha no primeiro acesso.
 
+O dashboard "Twitter API" tem quatro painéis:
+   * Total de requisições por minuto
+   * Erros por minuto
+   * Requisições por minuto
+   * Média do tempo de resposta por minuto
 <p>
   <img  src="./assets/grafana_dashboard.png" />
 </p>
