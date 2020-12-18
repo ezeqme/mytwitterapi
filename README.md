@@ -51,7 +51,7 @@ Client de linha de comando para busca de posts no Twitter e publicação na twre
 
 Tecnologias:
 
-[Fire](https://github.com/google/python-fire): biblioteca para gerar CLI's a partir de qualquer objeto Python.
+* [Fire](https://github.com/google/python-fire): biblioteca para gerar CLI's a partir de qualquer objeto Python.
 
 ## Database
 
