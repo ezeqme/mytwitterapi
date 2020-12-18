@@ -8,17 +8,13 @@
 Indice
 =================
 <!--ts-->
-   * [Sobre](#Sobre)
-   * [Tabela de Conteudo](#tabela-de-conteudo)
-   * [Instalação](#instalacao)
-   * [Como usar](#como-usar)
-      * [Pre Requisitos](#pre-requisitos)
-      * [Local files](#local-files)
-      * [Remote files](#remote-files)
-      * [Multiple files](#multiple-files)
-      * [Combo](#combo)
-   * [Tests](#testes)
-   * [Tecnologias](#tecnologias)
+   * [Ambientes](#Ambientes)
+      * [Aplicação](#Aplicação)
+      * [twrestapi](#twrestapi)
+      * [twitterctl](#twitterctl)
+      * [database](#database)
+      * [logs](#logs)
+      * [métricas](#métricas)
 <!--te-->
 
 
@@ -42,7 +38,11 @@ Indice
 - [x] Busca de posts no twitter a partir de um conjunto de tags especificos
 - [x] Publicação de posts do twitter na twresapi
 
-### Logs
+### database
+
+A aplicação utiliza o banco de dados NoSQL [MongoDB](https://www.mongodb.com/1).
+
+### logs
 
 Ambiente de logs executando:
 
@@ -51,7 +51,7 @@ Ambiente de logs executando:
 * [Vector](https://vector.dev/docs/about/what-is-vector/) para envio dos logs para o elasticsearch.
 
 
-### Métricas
+### métricas
 
 # Pré-requisitos
 
