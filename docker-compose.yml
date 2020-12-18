@@ -53,7 +53,6 @@ services:
   vector:
     build:
       context: infralogs/vector/
-    container_name: vector
     ports:
       - 9514:9514
       - 9014:9014
