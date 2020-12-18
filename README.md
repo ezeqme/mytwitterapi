@@ -31,12 +31,12 @@ Todos os ambientes são executados em [containers](https://www.docker.com/resour
 Os arquivos do projeto estão estruturados da seguinte forma:
 
     mytwitterapi
-    ├── infralogs                   # Diretório com arquivos de configuração para o ambiente de logs
-    ├── inframetrics                # Diretório com arquivo de configuração para o ambiente de métricas
-    ├── postman                     # Diretório com arquivo de coleção do Postman 
-    ├── twitterctl                  # Diretorio com client de linha de comando twitterctl.py
-    ├── twrestapi                   # Diretorio com aplicação rest de exemplo
-    ├── docker-compose.yml          # Arquivo de definição do Compose para deploy dos ambientes 
+    ├── infralogs                   # Arquivos de configuração do ambiente de logs
+    ├── inframetrics                # Arquivos de configuração do ambiente de métricas
+    ├── postman                     # Arquivo de coleção do Postman 
+    ├── twitterctl                  # Client de linha de comando twitterctl.py
+    ├── twrestapi                   # Código fonte da api
+    ├── docker-compose.yml          # Arquivo do Compose para deploy dos containers 
     ├── LICENSE
     └── README.md
 
@@ -113,6 +113,35 @@ $ docker-compose up --build
 # Opcional: use a opção "-d" para executar os containers em backgroud
 $ docker-compose up --build -d
 
+```
+
+## Publicando dados na API
+
+Inicialmente a API não vem com dados populados.
+
+Você pode publicar dados na API utilizando o CLI twitterctl.py
+
+Considetando que vc está dentro do diretório do projeto, execute o seguinte comandos para poder utilizar o CLI:
+
+```bash
+$ pip3 install -r ./twitterctl/requirements.txt
+$ chmod +x ./twitterctl/twitterctl.py
+```
+
+Execute o comando abaixo para realizar uma busca de tweets recentes por tags e publicar na twrestapi.
+
+Os parâmetros devem ser informados entre aspas:
+* Substituir <BEARER TOKEN> por um token Bearer válido da API do Twitter
+* Substituir <LISTA DE HASHTAGS SEPARADAS POR VÍRGULA> pela sua lista de tags. Você pode incluír quantas tags quiser.
+
+```bash
+$ ./twitterctl/twitterctl.py search "<BEARER TOKEN>" "<LISTA DE HASHTAGS SEPARADAS POR VÍRGULA>"
+```
+
+Exemplo de busca de tweets por hashtag:
+
+```bash
+$ ./twitterctl/twitterctl.py search "AAAAAAAAAAAAAAAAAAAAAM%faketokenfaketokenfaketokenfaketokenfaketokenfaketokenfaketokenfaketokenfaketokenfaketokenA" "#hashtag1, #hashtag2, #hashtag3"
 ```
 
 ### Autor
