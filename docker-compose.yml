@@ -3,36 +3,39 @@ services:
   twitterapi:
     build:
       context: twrestapi
+    image: twrestapi:python3-alpine
     ports:
       - "80:8080"
     links:
       - mongodb
       - vector
-    image: python3-alpine:flask
     environment:
       MONGO_DB_HOST: mongodb
       MONGO_DB_PORT: 27017
-    networks:
-      - default-network
-    depends_on:
-      - mongodb
     volumes:
       - type: volume
         source: applogs
         target: /app/logs
+    networks:
+      - my-twitter-api-network
+    depends_on:
+      - mongodb
 
   mongodb:
+    image: mongo
     ports:
       - "27017:27017"
-    image: mongo
     networks:
-      - default-network
+      - my-twitter-api-network
   
   elasticsearch:
-    build:
-      context: infralogs/elasticsearch/
-      args:
-        ELK_VERSION: $ELK_VERSION
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.8.13
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      ES_JAVA_OPTS: "-Xmx4096m -Xms4096m"
+      discovery.type: 'single-node'
     volumes:
       - type: bind
         source: ./infralogs/elasticsearch/config/elasticsearch.yml
@@ -41,18 +44,11 @@ services:
       - type: volume
         source: elasticsearch
         target: /usr/share/elasticsearch/data
-    ports:
-      - "9200:9200"
-      - "9300:9300"
-    environment:
-      ES_JAVA_OPTS: "-Xmx4096m -Xms4096m"
-      discovery.type: 'single-node'
     networks:
-      - default-network
+      - my-twitter-api-network
 
   vector:
-    build:
-      context: infralogs/vector/
+    image: timberio/vector:latest-alpine
     ports:
       - 9514:9514
       - 9014:9014
@@ -67,66 +63,57 @@ services:
       - type: volume
         source: vector
         target: /var/lib/vector/
+    networks:
+      - my-twitter-api-network
     depends_on:
       - elasticsearch
-    networks:
-      - default-network
 
   kibana:
-    build:
-      context: infralogs/kibana/
-      args:
-        ELK_VERSION: $ELK_VERSION
+    image: docker.elastic.co/kibana/kibana:6.8.13
+    ports:
+      - "5601:5601"
     volumes:
       - type: bind
         source: ./infralogs/kibana/config/kibana.yml
         target: /usr/share/kibana/config/kibana.yml
         read_only: true
-    ports:
-      - "5601:5601"
     networks:
-      - default-network
+      - my-twitter-api-network
     depends_on:
       - elasticsearch
 
-
   prometheus:
     image: prom/prometheus
+    ports:
+      - "9090:9090"
+    links:
+      - twitterapi
     volumes:
       - type: bind
         source: ./inframetrics/prometheus/config/prometheus.yml
         target: /etc/prometheus/prometheus.yml
         read_only: true
-    links:
-      - twitterapi
-    ports:
-      - "9090:9090"
     networks:
-      - default-network
-
+      - my-twitter-api-network
 
   grafana:
     image: grafana/grafana
+    ports:
+      - "3000:3000"
     volumes:
       - type: bind
         source: ./inframetrics/grafana/config/grafana.ini
         target: /etc/grafana/grafana.ini
         read_only: true
-    ports:
-      - "3000:3000"
     networks:
-      - default-network
-
+      - my-twitter-api-network
 
 networks:
-  default-network:
+  my-twitter-api-network:
     driver: bridge
-
 
 volumes:
   elasticsearch:
   grafana:
   applogs:
   vector:
-
-
