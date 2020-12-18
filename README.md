@@ -33,7 +33,7 @@ Os arquivos do projeto estão estruturados da seguinte forma:
     mytwitterapi
     ├── infralogs                   # Arquivos de configuração do ambiente de logs
     ├── inframetrics                # Arquivos de configuração do ambiente de métricas
-    ├── postman                     # Arquivo de coleção do Postman 
+    ├── exports                     # Arquivo de coleção do Postman e Dashboard do kibana para importação
     ├── twitterctl                  # Client de linha de comando twitterctl.py
     ├── twrestapi                   # Código fonte da api
     ├── docker-compose.yml          # Arquivo do Compose para deploy dos containers 
