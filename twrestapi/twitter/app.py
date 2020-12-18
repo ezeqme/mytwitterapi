@@ -56,7 +56,9 @@ try:
 
 except Exception as e:
 
-    applog.error("Fail connect mongodb", extra={'host':app.config['MONGO_DB_HOST'], 'port':app.config['MONGO_DB_PORT'], 'error': e})
+    tb = traceback.format_exc()
+
+    applog.error("Fail connect mongodb", extra={'host':app.config['MONGO_DB_HOST'], 'port':app.config['MONGO_DB_PORT'], 'trace': tb})
 
 
 twittcl = TwittCLogic()
@@ -97,7 +99,9 @@ def user_followers():
 
     except Exception as e:
 
-        applog.error("Error when listing users with more followers", extra={'method':'GET', 'logger': __name__, 'level': 'error', 'uuid': current_request_id(), 'endpoint': request.path, 'error': e})
+        tb = traceback.format_exc()
+
+        applog.error("Error when listing users with more followers", extra={'method':'GET', 'logger': __name__, 'level': 'error', 'uuid': current_request_id(), 'endpoint': request.path, 'trace': tb})
         
         return '{ "status": "500", "message": "Internal Server Error" }', 500
 
@@ -122,7 +126,9 @@ def publish_post():
 
     except Exception as e:
 
-        applog.error("Error when publish new tweets", extra={'method':'POST', 'logger': __name__, 'level': 'error', 'uuid': current_request_id(), 'endpoint': request.path, 'error': e })
+        tb = traceback.format_exc()
+
+        applog.error("Error when publish new tweets", extra={'method':'POST', 'logger': __name__, 'level': 'error', 'uuid': current_request_id(), 'endpoint': request.path, 'trace': tb })
         
         return jsonify('{ "status": "500", "message": "Internal Server Error" }'), 500
 
@@ -142,8 +148,9 @@ def posts_hour():
 
     except Exception as e:
 
+        tb = traceback.format_exc()
 
-        applog.error("Error when listing posts by time of publication", extra={'method':'GET', 'logger': __name__, 'level': 'error', 'uuid': current_request_id(), 'endpoint': request.path, 'error': e })
+        applog.error("Error when listing posts by time of publication", extra={'method':'GET', 'logger': __name__, 'level': 'error', 'uuid': current_request_id(), 'endpoint': request.path, 'trace': tb })
         
         return '{ "status": "500", "message": "Internal Server Error" }', 500
 
@@ -187,7 +194,7 @@ def after_request(response):
 
     response.headers.add('x-request-id', current_request_id())
 
-    applog.info("Request", extra={'method':'GET', 'logger': __name__, 'level': 'info', 'uuid': current_request_id(), 'endpoint': request.path, 'response': response })
+    applog.info("Request", extra={'method':request.method, 'logger': __name__, 'level': 'info', 'uuid': current_request_id(), 'endpoint': request.path, 'status_code': response.status_code })
     
     return response
 
