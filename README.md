@@ -37,7 +37,7 @@ Api Rest para publicação e consulta de posts do Twitter:
 - [x] Contagem de posts publicados por hora do dia
 - [x] Contagem de posts publicados de um usuário de acordo com uma determinada tag agrupados por localização ou linguagem
 
-### Tecnologias
+Tecnologias:
 
 * [Flask](https://flask.palletsprojects.com/en/1.1.x/): Framework para desenvolvimento web.
 * [mongoengine](http://mongoengine.org/): Object-Document Mapper para MongoDB.
@@ -49,7 +49,7 @@ Client de linha de comando para busca de posts no Twitter e publicação na twre
 - [x] Busca de posts no twitter a partir de um conjunto de tags especificos
 - [x] Publicação de posts do twitter na twresapi
 
-### Tescnologias
+Tecnologias:
 
 [Fire](https://github.com/google/python-fire): biblioteca para gerar CLI's a partir de qualquer objeto Python.
 
