@@ -24,7 +24,9 @@ Conteúdo
 
 # Ambientes
 
-Todos os ambientes são executados em containers no Docker. 
+Todos os ambientes são executados em [containers](https://www.docker.com/resources/what-container) no Docker. 
+
+
 
 Os arquivos do projeto estão estruturados da seguinte forma:
 
@@ -102,12 +104,13 @@ $ git clone https://github.com/ezequielsbarros/mytwitterapi.git
 # Acesse a pasta do projeto no terminal/cmd
 $ cd mytwitterapi
 
-# Faça o deploy dos ambientes com o Compose
+# Faça o deploy dos containers com o Compose
 # A opção "--build" serve para criar o container da api rest. 
-# O uso dessa opção só é nescessária na primeira execução ou caso a aplicação twrestapi seja modificada  
+# O uso dessa opção só é nescessária na primeira execução
+# Ou caso o código da aplicação twrestapi seja modificado  
 $ docker-compose up --build
 
-# Opcional: use a opção "-d" para executar os ambientes em backgroud
+# Opcional: use a opção "-d" para executar os containers em backgroud
 $ docker-compose up --build -d
 
 ```
