@@ -150,6 +150,10 @@ Você pode publicar dados na API utilizando o CLI twitterctl.py
 Considetando que vc está dentro do diretório do projeto, execute o seguinte comandos para poder utilizar o CLI:
 
 ```bash
+# Instalar o pip3
+$ sudo apt-get install python3-pip
+
+# Instalar os requerimentos
 $ pip3 install -r ./twitterctl/requirements.txt
 $ chmod +x ./twitterctl/twitterctl.py
 ```
@@ -168,6 +172,108 @@ Exemplo de busca de tweets por hashtag:
 
 ```bash
 $ ./twitterctl/twitterctl.py search "AAAAAAAAAAAAAAAAAAAAAM%faketokenfaketokenfaketokenfaketokenfaketokenfaketokenfaketokenfaketokenfaketokenfaketokenA" "#openbanking, #remediation, #devops, #sre, #microservices, #observability, #oauth, #metrics, #logmonitoring, #opentracing"
+```
+
+## Consumindo dados da API
+
+```bash
+# Listando os endpoints da api disponíveis
+$ curl http://localhost
+{
+  "endpoints": [
+    {
+      "method": "POST", 
+      "url": "/twitter/api/v1/publish/posts"
+    }, 
+    {
+      "method": "GET", 
+      "url": "/twitter/api/v1/users/followers"
+    }, 
+    {
+      "method": "GET", 
+      "url": "/twitter/api/v1/posts/hour"
+    }, 
+    {
+      "method": "GET", 
+      "url": "/twitter/api/v1/posts/tags/location"
+    }, 
+    {
+      "method": "GET", 
+      "url": "/twitter/api/v1/posts/tags/lang"
+    }
+  ], 
+  "info": "Twitter API", 
+  "version": "1.0.0"
+}
+
+# Publicando um post via API
+$ curl http://localhost/twitter/api/v1/publish/posts
+$ curl  -H "Content-Type: application/json" http://localhost//twitter/api/v1/publish/posts -d '[ {"id":"2142345235234","text": "Learn how to instrument and troubleshoot your Go application with #Jaeger and #OpenTracing. Read our guide to get started! https://t.co/kCAlZon3tR https://t.co/2zSGpas0R6", "created_at": "2020-12-15T13:49:02.000Z", "post_hour": 13, "hashtag": " #opentracing", "lang": "en", "author_id": "2904502273", "username": "logzio", "name": "Logz.io", "location": "Israel", "followers_count": 1630} ]'
+
+
+...
+
+# Listando os usuários com mais seguidores #ETEMOSUMBUG :)
+$ curl http://localhost/twitter/api/v1/users/followers
+[
+  "username: eleconomista, followers: 656407", 
+  "username: KirkDBorne, followers: 272189", 
+  "username: KirkDBorne, followers: 272189", 
+  "username: MikeSchiemer, followers: 218609", 
+  "username: RedHat, followers: 211433"
+]
+
+# Listando os a contagem de posts publicados pela hora do dia
+$ curl http://localhost//twitter/api/v1/posts/hour
+[
+  {
+    "_id": 0, 
+    "total_post": 17
+  }, 
+  {
+    "_id": 1, 
+    "total_post": 5
+  }, 
+  {
+    "_id": 2, 
+    "total_post": 7
+  }, 
+...
+
+# Listando a contagem de posts de cada tag agrupados por usuário e localização
+$ curl http://localhost/twitter/api/v1/posts/tags/location
+[
+   {
+    "count": 1, 
+    "country": "undefined", 
+    "hashtag": " #microservices", 
+    "username": "einfochipsltd"
+  }, 
+  {
+    "count": 1, 
+    "country": "St Louis", 
+    "hashtag": " #observability", 
+    "username": "JustinRyburn"
+  }
+...
+
+# Listando a contagem de posts de cada tag agrupados por usuário e linguagem
+curl http://localhost/twitter/api/v1/posts/tags/lang
+[ 
+  {
+    "count": 1, 
+    "hashtag": " #microservices", 
+    "lang": "en", 
+    "username": "einfochipsltd"
+  }, 
+  {
+    "count": 1, 
+    "hashtag": " #observability", 
+    "lang": "en", 
+    "username": "JustinRyburn"
+  }
+...
+
 ```
 
 # Logs e Métricas
