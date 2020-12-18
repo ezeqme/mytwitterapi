@@ -298,13 +298,13 @@ Ao acessar o Kibana pela primeira vez é preciso configurar o index pattern.
 Crie o index pattern com o prefixo "twitterapi-*":
 
 <p>
-  <img alt="NextLevelWeek" title="#NextLevelWeek" src="./assets/kibana1.png" />
+  <img  src="./assets/kibana1.png" />
 </p>
 
 Selecione o campo "timestamp" e clique em "Create index pattern":
 
 <p>
-  <img alt="NextLevelWeek" title="#NextLevelWeek" src="./assets/kibana3.png" />
+  <img  src="./assets/kibana3.png" />
 </p>
 
 ### Importação de Dashboard
@@ -315,25 +315,25 @@ Para realizar o import:
 
 * Na aba esquerda clique na opção "Management" --> "Saved Objects" --> "Import"
 <p>
-  <img alt="NextLevelWeek" title="#NextLevelWeek" src="./assets/kibana4.png" />
+  <img  src="./assets/kibana4.png" />
 </p>
 * Clique em import novamente e selecione o arquivo com os dados exportados do dashboard:
    * Arquivo dentro do projeto: exports/kibana-dashboar-twrestapi-export.json
 <p>
-  <img alt="NextLevelWeek" title="#NextLevelWeek" src="./assets/kibana5.png" />
+  <img  src="./assets/kibana5.png" />
 </p>
 * Clique em "Import"
 * Selecione o index patter para relacionar ao dashboard
 <p>
-  <img alt="NextLevelWeek" title="#NextLevelWeek" src="./assets/kibana6.png" />
+  <img  src="./assets/kibana6.png" />
 </p>
 * Se aparecer a mensagem "Import sucessful" o dashboard foi importado corretamente
 <p>
-  <img alt="NextLevelWeek" title="#NextLevelWeek" src="./assets/kibana7.png" />
+  <img  src="./assets/kibana7.png" />
 </p>
 * Acesse na aba lateral "Dashboard" --> "Twitter API"
 <p>
-  <img alt="NextLevelWeek" title="#NextLevelWeek" src="./assets/kibana8.png" />
+  <img  src="./assets/kibana8.png" />
 </p>
 
 ## Dashboard de métricas no Grafana
@@ -346,7 +346,7 @@ Senha: admin
 Observação: será solicitado a troca da senha no primeiro acesso.
 
 <p>
-  <img alt="NextLevelWeek" title="#NextLevelWeek" src="./assets/grafana_dashboard.png" />
+  <img  src="./assets/grafana_dashboard.png" />
 </p>
 
 ### Autor
