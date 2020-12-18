@@ -26,7 +26,9 @@ Indice
 	🚧  Python Select 🚀 Em construção...  🚧
 </h4>
 
-## Ambientes
+# Ambientes
+
+## Aplicação
 
 ### twrestapi
 
@@ -40,33 +42,38 @@ Indice
 - [x] Busca de posts no twitter a partir de um conjunto de tags especificos
 - [x] Publicação de posts do twitter na twresapi
 
+### Logs
+
+Ambiente de logs executando:
+
+* [Elasticsearch](https://www.elastic.co/pt/elasticsearch/) para armazenamento e indexação dos logs da aplicação.
+* [Kibana](https://www.elastic.co/pt/kibana) para visualização e analise dos logs.
+* [Vector](https://vector.dev/docs/about/what-is-vector/) para envio dos logs para o elasticsearch.
+
+
+### Métricas
+
 # Pré-requisitos
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
 
-[Git](https://git-scm.com)
-[Docker](https://docs.docker.com/engine/install/ubuntu/)
-[Docker Compose](https://docs.docker.com/compose/install/)
+* [Git](https://git-scm.com)
+* [Docker](https://docs.docker.com/engine/install/ubuntu/)
+* [Docker-Compose](https://docs.docker.com/compose/install/)
 
-
-Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
 
 
 ```bash
 # Clone este repositório
-$ git clone <https://github.com/tgmarinho/nlw1>
+$ git clone <https://github.com/ezequielsbarros/mytwitterapi.git>
 
 # Acesse a pasta do projeto no terminal/cmd
-$ cd nlw1
+$ cd mytwitterapi
 
-# Vá para a pasta server
-$ cd server
+# Faça o deploy dos ambientes com o Compose
+$ docker-compose up --build
 
-# Instale as dependências
-$ npm install
+# Opcional: use a opção "-d" para executar os ambientes em backgroud
+$ docker-compose up --build
 
-# Execute a aplicação em modo de desenvolvimento
-$ npm run dev:server
-
-# O servidor inciará na porta:3333 - acesse <http://localhost:3333>
 ```
