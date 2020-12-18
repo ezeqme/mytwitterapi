@@ -3,15 +3,18 @@
     ignore_older = 600 
     include = ["/var/*.log"] 
 
-#[sinks.out]
-#type = "file"
-#inputs = [  "file" ]
-#path = "/tmp/vector-%Y-%m-%d.log"
-#encoding = "ndjson"
+[transforms.json_parser]
+  type = "json_parser" 
+  inputs = ["file"] 
+  drop_field = true 
+  drop_invalid = true 
+  field = "message"
+  overwrite_target = false
+  target_field = "root_field"
 
 [sinks.elk_out]
     type = "elasticsearch" 
-    inputs = ["file"] 
+    inputs = ["json_parser"] 
     endpoint = "http://elasticsearch:9200"
     healthcheck = true
     index = "twitterapi-%F"
