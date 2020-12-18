@@ -1,0 +1,18 @@
+[sources.file]
+    type = "file" 
+    ignore_older = 600 
+    include = ["/var/*.log"] 
+
+#[sinks.out]
+#type = "file"
+#inputs = [  "file" ]
+#path = "/tmp/vector-%Y-%m-%d.log"
+#encoding = "ndjson"
+
+[sinks.elk_out]
+    type = "elasticsearch" 
+    inputs = ["file"] 
+    endpoint = "http://elasticsearch:9200"
+    healthcheck = true
+    index = "twitterapi-%F"
+    compression = "none" 
