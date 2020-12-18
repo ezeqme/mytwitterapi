@@ -317,7 +317,7 @@ Selecione o campo "timestamp" e clique em "Create index pattern":
 
 ### Importação de Dashboard
 
-Para visualizar os logs do no Kibana foi disponibilizado um dashboard para ser importado:
+Para visualizar os logs no Kibana foi disponibilizado um dashboard para ser importado:
 
 Para realizar o import:
 
