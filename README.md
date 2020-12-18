@@ -129,6 +129,18 @@ CONTAINER ID        IMAGE                                                  COMMA
 d3156c34e125        grafana/grafana                                        "/run.sh"                42 minutes ago      Up 42 minutes       0.0.0.0:3000->3000/tcp                           mytwitterapi_grafana_1
 ```
 
+## Acessando os serviços
+
+Os serviços podem ser acessados pelas seguintes urls após o deploy:
+
+* twitterapi: [http://localhost](http://localhost)
+* MongoDB: [http://localhost:27017](http://localhost:27017)
+* Elasticsearch: [http://localhost:9200](http://localhost:9200)
+* Prometheus: [http://localhost:9092](http://localhost:9092)
+* Kibana: [http://localhost:5601](http://localhost:5601)
+* Grafana: [http://localhost:3000](http://localhost:3000)
+
+
 ## Publicando dados na API
 
 Inicialmente a API não vem com dados populados.
@@ -155,8 +167,32 @@ $ ./twitterctl/twitterctl.py search "<BEARER TOKEN>" "<LISTA DE HASHTAGS SEPARAD
 Exemplo de busca de tweets por hashtag:
 
 ```bash
-$ ./twitterctl/twitterctl.py search "AAAAAAAAAAAAAAAAAAAAAM%faketokenfaketokenfaketokenfaketokenfaketokenfaketokenfaketokenfaketokenfaketokenfaketokenA" "#hashtag1, #hashtag2, #hashtag3"
+$ ./twitterctl/twitterctl.py search "AAAAAAAAAAAAAAAAAAAAAM%faketokenfaketokenfaketokenfaketokenfaketokenfaketokenfaketokenfaketokenfaketokenfaketokenA" "#openbanking, #remediation, #devops, #sre, #microservices, #observability, #oauth, #metrics, #logmonitoring, #opentracing"
 ```
+
+# Logs e Métricas
+
+## Importando dashboard no Kibana
+
+Para visualizar os logs do no Kibana foi disponibilizado um dashboard para ser importado:
+
+Para realizar o import:
+* Acesse o kibana: http://localhost:5601/
+* Na aba esquerda clique na opção "Management" --> "Saved Objects" --> "Import"
+* Clique em import novamente e selecione o arquivo com os dados exportados do dashboard:
+   * Arquivo dentro do projeto: exports/kibana-dashboar-twrestapi-export.json
+* Clique em "Import"
+* Se aparecer a mensagem "Import sucessful" o dashboard foi importado corretamente
+* Acesse na aba lateral "Dashboard" --> "Twitter API"
+
+## Acessando métricas no Grafana
+
+O dashboard de métricas já é importado automaticamente ao inicializar o container do grafana. Basta acessar o serviço http://localhost:3000/
+
+Usuário: admin
+Senha: admin
+
+Observação: será solicitado a troca da senha no primeiro acesso.
 
 ### Autor
 ---
