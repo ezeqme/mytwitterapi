@@ -92,7 +92,6 @@ Você pode executar esses ambientes em qualquer sistema operacional com suporte 
 * Sistema Operacional: Ubuntu 18 LTE
 * Memória RAM: >= 6GB
 
-()
 
 # Deploy dos Ambientes
 
