@@ -112,6 +112,18 @@ services:
         source: ./inframetrics/grafana/grafana.ini
         target: /etc/grafana/grafana.ini
         read_only: true
+      - type: bind
+        source: ./inframetrics/grafana/provisioning/dashboards/dashboard.yml
+        target: /etc/grafana/provisioning/dashboards/dashboard.yml
+        read_only: true
+      - type: bind
+        source: ./inframetrics/grafana/provisioning/dashboards/dashboard-twitterapi.json
+        target: /etc/grafana/provisioning/dashboards/dashboard-twitterapi.json
+        read_only: true
+      - type: bind
+        source: ./inframetrics/grafana/provisioning/datasources/datasource.yml
+        target: /etc/grafana/provisioning/datasources/datasource.yml
+        read_only: true
     networks:
       - my-twitter-api-network
 
