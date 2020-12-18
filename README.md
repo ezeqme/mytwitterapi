@@ -29,11 +29,6 @@
       * [Autor](#autor)
 <!--te-->
 
-
-<h4 align="center"> 
-	🚧  Python Select 🚀 Em construção...  🚧
-</h4>
-
 # Ambientes
 
 Todos os ambientes são executados em [containers](https://www.docker.com/resources/what-container) no Docker. 
