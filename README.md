@@ -32,8 +32,8 @@ Os arquivos do projeto estão estruturados da seguinte forma:
     ├── infralogs                   # Diretório com arquivos de configuração para o ambiente de logs
     ├── inframetrics                # Diretório com arquivo de configuração para o ambiente de métricas
     ├── postman                     # Diretório com arquivo de coleção do Postman 
-    ├── twitterctl                  # Direorio com client de linha de comando twitterctl.py
-    ├── twrestapi                   # Direorio com aplicação rest de exemplo
+    ├── twitterctl                  # Diretorio com client de linha de comando twitterctl.py
+    ├── twrestapi                   # Diretorio com aplicação rest de exemplo
     ├── docker-compose.yml          # Arquivo de definição do Compose para deploy dos ambientes 
     ├── LICENSE
     └── README.md
@@ -115,5 +115,5 @@ $ docker-compose up --build -d
 
 Ezequiel de Souza Barros
 
-[![Linkedin Badge](https://img.shields.io/badge/-Thiago-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/tgmarinho/)](https://www.linkedin.com/in/ezequielbarros/) 
-[![Gmail Badge](https://img.shields.io/badge/-tgmarinho@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:tgmarinho@gmail.com)](mailto:ezequiel.sbarros@gmail.com)
+[![Linkedin Badge](https://img.shields.io/badge/-Ezequiel-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/ezequielbarros/)](https://www.linkedin.com/in/ezequielbarros/) 
+[![Gmail Badge](https://img.shields.io/badge/-ezequiel.sbarros@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:tgmarinho@gmail.com)](mailto:ezequiel.sbarros@gmail.com)
