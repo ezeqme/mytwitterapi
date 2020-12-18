@@ -5,7 +5,7 @@
 
 ![Badge](https://img.shields.io/badge/MyTwitterApi-%23CB563E?style=for-the-badge&logo=twitter) [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/) [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
 
-Conteúdo
+# Conteúdo
 =================
 <!--ts-->
    * [Ambientes](#Ambientes)
@@ -85,6 +85,14 @@ Ambiente de logs executando:
 * [Prometheus](https://prometheus.io/) para coleta e armazenamento de métricas.
 * [Grafana](https://grafana.com/) para visualização e analise de métricas.
 
+# Pré-Requisitos
+
+Você pode executar esses ambientes em qualquer sistema operacional com suporte a docker mas não posso garantir que tudo vai funcionar como esperado portando recomendo testar seguindo os requisitos abaixo:
+
+* Sistema Operacional: Ubuntu 18 LTE
+* Memória RAM: >= 6GB
+
+()
 
 # Deploy dos Ambientes
 
@@ -136,7 +144,7 @@ Os serviços podem ser acessados pelas seguintes urls após o deploy:
 * twitterapi: [http://localhost](http://localhost)
 * MongoDB: [http://localhost:27017](http://localhost:27017)
 * Elasticsearch: [http://localhost:9200](http://localhost:9200)
-* Prometheus: [http://localhost:9092](http://localhost:9092)
+* Prometheus: [http://localhost:9090](http://localhost:9090)
 * Kibana: [http://localhost:5601](http://localhost:5601)
 * Grafana: [http://localhost:3000](http://localhost:3000)
 
@@ -172,7 +180,7 @@ $ ./twitterctl/twitterctl.py search "AAAAAAAAAAAAAAAAAAAAAM%faketokenfaketokenfa
 
 # Logs e Métricas
 
-## Importando dashboard no Kibana
+## Dashboard de logs no Kibana
 
 Para visualizar os logs do no Kibana foi disponibilizado um dashboard para ser importado:
 
@@ -185,7 +193,7 @@ Para realizar o import:
 * Se aparecer a mensagem "Import sucessful" o dashboard foi importado corretamente
 * Acesse na aba lateral "Dashboard" --> "Twitter API"
 
-## Acessando métricas no Grafana
+## Dashboard de métricas no Grafana
 
 O dashboard de métricas já é importado automaticamente ao inicializar o container do grafana. Basta acessar o serviço http://localhost:3000/
 
