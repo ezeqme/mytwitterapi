@@ -25,6 +25,10 @@ services:
     image: mongo
     ports:
       - "27017:27017"
+    volumes:
+      - type: volume
+        source: mongodb
+        target: /data/db
     networks:
       - my-twitter-api-network
   
@@ -93,6 +97,9 @@ services:
         source: ./inframetrics/prometheus/prometheus.yml
         target: /etc/prometheus/prometheus.yml
         read_only: true
+      - type: volume
+        source: prometheus
+        target: /prometheus
     networks:
       - my-twitter-api-network
 
@@ -117,3 +124,5 @@ volumes:
   grafana:
   applogs:
   vector:
+  mongodb:
+  prometheus:

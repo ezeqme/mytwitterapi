@@ -115,6 +115,20 @@ $ docker-compose up --build -d
 
 ```
 
+Para validar se todos os containers estão up execute o seguinte comando:
+
+```bash
+$ docker ps
+CONTAINER ID        IMAGE                                                  COMMAND                  CREATED             STATUS              PORTS                                            NAMES
+0b4abb8b7747        prom/prometheus                                        "/bin/prometheus --c…"   42 minutes ago      Up 42 minutes       0.0.0.0:9090->9090/tcp                           mytwitterapi_prometheus_1
+991fd6f5fb9d        twrestapi:python3-alpine                               "sh entrypoint.sh"       42 minutes ago      Up 42 minutes       0.0.0.0:80->8080/tcp                             mytwitterapi_twitterapi_1
+3f347620045e        docker.elastic.co/kibana/kibana:6.8.13                 "/usr/local/bin/kiba…"   42 minutes ago      Up 42 minutes       0.0.0.0:5601->5601/tcp                           mytwitterapi_kibana_1
+8af6ae1d3e2f        timberio/vector:latest-alpine                          "/usr/local/bin/vect…"   42 minutes ago      Up 42 minutes       0.0.0.0:9014->9014/tcp, 0.0.0.0:9514->9514/tcp   mytwitterapi_vector_1
+69722b86cfff        mongo                                                  "docker-entrypoint.s…"   42 minutes ago      Up 42 minutes       0.0.0.0:27017->27017/tcp                         mytwitterapi_mongodb_1
+1798f0f53988        docker.elastic.co/elasticsearch/elasticsearch:6.8.13   "/usr/local/bin/dock…"   42 minutes ago      Up 42 minutes       0.0.0.0:9200->9200/tcp, 0.0.0.0:9300->9300/tcp   mytwitterapi_elasticsearch_1
+d3156c34e125        grafana/grafana                                        "/run.sh"                42 minutes ago      Up 42 minutes       0.0.0.0:3000->3000/tcp                           mytwitterapi_grafana_1
+```
+
 ## Publicando dados na API
 
 Inicialmente a API não vem com dados populados.
