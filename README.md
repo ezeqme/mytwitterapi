@@ -332,6 +332,9 @@ Para realizar o import:
   <img alt="NextLevelWeek" title="#NextLevelWeek" src="./assets/kibana7.png" />
 </p>
 * Acesse na aba lateral "Dashboard" --> "Twitter API"
+<p>
+  <img alt="NextLevelWeek" title="#NextLevelWeek" src="./assets/kibana8.png" />
+</p>
 
 ## Dashboard de métricas no Grafana
 
