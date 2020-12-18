@@ -1,6 +1,7 @@
 import os
 import flask
 import logging
+import traceback
 import json_log_formatter
 from flask import request, jsonify
 from flask_log_request_id import RequestID, RequestIDLogFilter, current_request_id
@@ -127,6 +128,7 @@ def publish_post():
 
     return jsonify(result)
 
+
 @app.route('/twitter/api/v1/posts/hour', methods=['GET'])
 def posts_hour():
 
@@ -139,6 +141,7 @@ def posts_hour():
         result = twittcl.total_posts_by_hour()
 
     except Exception as e:
+
 
         applog.error("Error when listing posts by time of publication", extra={'method':'GET', 'logger': __name__, 'level': 'error', 'uuid': current_request_id(), 'endpoint': request.path, 'error': e })
         
@@ -159,11 +162,14 @@ def posts_tags(group):
         applog.info("get total post by tag", extra={'logger': __name__, 'level': 'info', 'uuid': current_request_id(), 'endpoint': request.path })
         
         try:
+
             result = twittcl.total_posts_by_tag(group)
 
         except Exception as e:
 
-            applog.error("Error when listing posts by time of publication", extra={'method':'GET', 'logger': __name__, 'level': 'error', 'uuid': current_request_id(), 'endpoint': request.path , 'error': e})
+            tb = traceback.format_exc()
+
+            applog.error("Error when listing posts by time of publication", extra={'method':'GET', 'logger': __name__, 'level': 'error', 'uuid': current_request_id(), 'endpoint': request.path , 'trace': tb})
             
             return '{ "status": "500", "message": "Internal Server Error" }', 500
 
