@@ -18,7 +18,7 @@
 * [Deploy dos Ambientes](#deploy-dos-ambientes)
 * [Acessando os serviços](#acessando-os-servi%C3%A7os)
 * [Publicando dados na API](#publicando-dados-na-api)
-* [Consumindo dados da API](#consumindo-dados-da-api)
+* [Consumindo dados na API](#consumindo-dados-na-api)
 * [Logs e Métricas](#logs-e-m%C3%A9tricas)
   * [Dashboard de logs no Kibana](#logs-e-m%C3%A9tricas)
     * [Criar Index Pattern](#criar-index-pattern)
@@ -176,7 +176,7 @@ $ chmod +x ./twitterctl/twitterctl.py
 Execute o comando abaixo para realizar uma busca de tweets recentes por tags e publicar na twrestapi.
 
 Os parâmetros devem ser informados entre aspas:
-* Substituir <BEARER TOKEN> por um token Bearer válido da API do Twitter
+* Substituir <BEARER TOKEN> por um token Bearer válido na API do Twitter
 * Substituir <LISTA DE HASHTAGS SEPARADAS POR VÍRGULA> pela sua lista de tags. Você pode incluír quantas tags quiser.
 
 ```bash
@@ -189,10 +189,10 @@ Exemplo de busca de tweets por hashtag:
 $ ./twitterctl/twitterctl.py search "AAAAAAAAAAAAAAAAAAAAAM%faketokenfaketokenfaketokenfaketokenfaketokenfaketokenfaketokenfaketokenfaketokenfaketokenA" "#openbanking, #remediation, #devops, #sre, #microservices, #observability, #oauth, #metrics, #logmonitoring, #opentracing"
 ```
 
-## Consumindo dados da API
+## Consumindo dados na API
 
 ```bash
-# Listando os endpoints da api disponíveis
+# Listando os endpoints na api disponíveis
 $ curl http://localhost
 {
   "endpoints": [
