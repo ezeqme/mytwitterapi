@@ -161,6 +161,8 @@ Inicialmente a API não vem com dados populados.
 
 Você pode publicar dados na API utilizando o CLI twitterctl.py
 
+Para utilizar o CLI você precisa de um token de acesso para a API do [Twitter](https://developer.twitter.com/en):
+
 Considetando que vc está dentro do diretório do projeto, execute o seguinte comandos para poder utilizar o CLI:
 
 ```bash
