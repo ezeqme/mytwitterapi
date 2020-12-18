@@ -309,7 +309,9 @@ Senha: admin
 
 Observação: será solicitado a troca da senha no primeiro acesso.
 
-![Dashboard](https://imgur.com/KZzfRNL)
+<p>
+  <img alt="NextLevelWeek" title="#NextLevelWeek" src="./assets/grafana_dashboard.png" />
+</p>
 
 ### Autor
 ---
